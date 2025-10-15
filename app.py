@@ -91,7 +91,29 @@ def create_app():
             payload["error"] = str(e)
             return jsonify(payload), 500
 
+    # Add dissociate by terms endpoint
+    @app.get("/dissociate/terms/<term_a>/<term_b>")
+    def dissociate_terms(term_a, term_b):
+        # TODO: Replace with actual dissociation logic
+        return jsonify({
+            "studies": [],
+            "message": f"Studies mentioning {term_a} but not {term_b}"
+        })
+
+    # Add dissociate by locations endpoint
+    @app.get("/dissociate/locations/<coords_a>/<coords_b>")
+    def dissociate_locations(coords_a, coords_b):
+        # TODO: Replace with actual dissociation logic
+        return jsonify({
+            "studies": [],
+            "message": f"Studies mentioning {coords_a} but not {coords_b}"
+        })
+
     return app
 
 # WSGI entry point (no __main__)
+
 app = create_app()
+
+if __name__ == "__main__":
+    app.run(debug=True)
