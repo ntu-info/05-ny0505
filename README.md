@@ -74,20 +74,20 @@ Create a PostgreSQL database (e.g., on Render).
 ### 2) Verify the connection
 
 ```bash
-python check_db.py --url "postgresql://<USER>:<PASSWORD>@<HOST>:5432/<DBNAME>"
+python check_db.py --url "postgresql://victoria_bk2u_user:pmcViTLVHnSmvLv7MNTEer7m0Vx4BTg3@dpg-d3n4f13uibrs73bgdimg-a.oregon-postgres.render.com/victoria_bk2u"
 ```
 
 ### 3) Populate the database
 
 ```bash
-python create_db.py --url "postgresql://<USER>:<PASSWORD>@<HOST>:5432/<DBNAME>"
+python create_db.py --url "postgresql://victoria_bk2u_user:pmcViTLVHnSmvLv7MNTEer7m0Vx4BTg3@dpg-d3n4f13uibrs73bgdimg-a.oregon-postgres.render.com/victoria_bk2u"
 ```
 
 ### 4) Run the Flask service
 
 Deploy `app.py` as a Web Service (e.g., on Render) and set the environment variable:
 
-- `DB_URL=postgresql://<USER>:<PASSWORD>@<HOST>:5432/<DBNAME>`
+- `DB_URL=postgresql://victoria_bk2u_user:pmcViTLVHnSmvLv7MNTEer7m0Vx4BTg3@dpg-d3n4f13uibrs73bgdimg-a.oregon-postgres.render.com/victoria_bk2u`
 
 Use a production server such as Gunicorn as your start command:
 
@@ -99,15 +99,15 @@ gunicorn app:app --bind 0.0.0.0:$PORT
 
 After deployment, check the basic endpoints:
 
-- Images: `https://<your-app>.onrender.com/img`
-- DB connectivity: `https://<your-app>.onrender.com/test_db`
+- Images: `http://localhost:5000/img`
+- DB connectivity: `http://localhost:5000/test_db`
 
 ---
 
 ## Environment Variables
 
 - **`DB_URL`** – Full PostgreSQL connection string used by the app.  
-  Example: `postgresql://<USER>:<PASSWORD>@<HOST>:5432/<DBNAME>`
+  `postgresql://victoria_bk2u_user:pmcViTLVHnSmvLv7MNTEer7m0Vx4BTg3@dpg-d3n4f13uibrs73bgdimg-a.oregon-postgres.render.com/victoria_bk2u`
 
 > **Security note:** Never commit real credentials to version control. Use environment variables or your hosting provider’s secret manager.
 
@@ -118,15 +118,15 @@ After deployment, check the basic endpoints:
 **By terms**
 
 ```bash
-curl https://<your-app>.onrender.com/dissociate/terms/posterior_cingulate/ventromedial_prefrontal
-curl https://<your-app>.onrender.com/dissociate/terms/ventromedial_prefrontal/posterior_cingulate
+curl https://ny0505.onrender.com/dissociate/terms/posterior_cingulate/ventromedial_prefrontal
+curl https://ny0505.onrender.com/dissociate/terms/ventromedial_prefrontal/posterior_cingulate
 ```
 
 **By coordinates**
 
 ```bash
-curl https://<your-app>.onrender.com/dissociate/locations/0_-52_26/-2_50_-6
-curl https://<your-app>.onrender.com/dissociate/locations/-2_50_-6/0_-52_26
+curl https://ny0505.onrender.com/dissociate/locations/0_-52_26/-2_50_-6
+curl https://ny0505.onrender.com/dissociate/locations/-2_50_-6/0_-52_26
 ```
 
 ---
